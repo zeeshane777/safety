@@ -1,0 +1,69 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}{\f1 Arial;}}
+\fs24
+\b Etude de faisabilite et descriptif technique - Application Safety\b0\par
+\par
+\b 1. Objectif du projet\b0\par
+Safety est une application mobile d'assistance et de signalement destinee aux contextes de soiree, festival et evenement.\par
+L'objectif produit est de proposer un parcours simple: prevention, signalement, suivi de prise en charge, puis accompagnement utilisateur.\par
+\par
+\b 2. Faisabilite technique globale\b0\par
+- Faisable rapidement en MVP avec React Native + Expo grace a une base cross-platform (Android/iOS/Web).\par
+- Faisable sans backend complexe dans une premiere phase: navigation locale, etats UI, medias embarques.\par
+- Evolutive: ajout d'API, auth, base de donnees et geolocalisation temps reel possible sans refonte majeure.\par
+- Risques principaux identifies: performance media (video), compatibilite web de certains modules natifs, et qualite reseau mobile.\par
+\par
+\b 3. Stack technique retenue\b0\par
+- Framework: Expo SDK 54 + React Native 0.81.5.\par
+- Langage: TypeScript.\par
+- Navigation: @react-navigation/native + native-stack.\par
+- UI/UX: composants React Native, SafeArea, image backgrounds, boutons custom.\par
+- Media: expo-av (lecture video), assets PNG/WEBP/SVG/MOV.\par
+- Cartographie: react-native-maps (mobile), fallback web dedie.\par
+\par
+\b 4. Architecture applicative\b0\par
+- Point d'entree: index.ts puis App.tsx.\par
+- Orchestration ecrans centralisee dans un Stack Navigator.\par
+- Separation claire par dossier: src/screens, src/components, src/hooks, src/types.\par
+- Typage des donnees metier (ex: historique d'alertes) dans src/types.\par
+\par
+\b 5. Parcours fonctionnel implemente\b0\par
+- Welcome -> CreateAccount -> HealthSheet -> SafetyActivated -> Dashboard.\par
+- Depuis Dashboard: acces Carte, Aide, Compte et scenario Signalement.\par
+- Ecran AlertSuccess en 3 etapes: Signalement, Traitement, Prise en charge.\par
+- Historique d'alertes maintenu en etat global simple (memoire session).\par
+\par
+\b 6. Compatibilite et execution\b0\par
+- Mobile: execution via Expo Go (Android/iOS) pour demo rapide.\par
+- Web: execution via expo start --web pour presentation PC.\par
+- Adaptations web en place pour modules natifs non supportes (cartes), avec ecrans .web.tsx.\par
+\par
+\b 7. Analyse des contraintes\b0\par
+- react-native-maps n'est pas nativement portable web sans adaptation; necessite fallback ou provider web specifique.\par
+- Les videos lourdes augmentent les temps de chargement et la taille de bundle.\par
+- L'absence de backend limite la persistence multi-session et la synchronisation temps reel.\par
+- Le mode New Architecture Expo peut exposer des incompatibilites selon bibliotheques tierces.\par
+\par
+\b 8. Solutions techniques deja appliquees\b0\par
+- Fallback web dedie pour les ecrans cartographiques critiques.\par
+- Correction des references d'assets pour eviter les erreurs de bundle.\par
+- Structure de navigation robuste avec routes explicites et callbacks de transition.\par
+- Gestion defensive de lecture video (reprise, boucle, fallback en cas d'erreur).\par
+\par
+\b 9. Securite, qualite et maintenabilite\b0\par
+- TypeScript reduit les erreurs runtime et clarifie les contrats de composants.\par
+- Architecture modulaire facilitant la maintenance et les evolutions incrmentales.\par
+- Standardisation des composants UI et des styles pour une coherence visuelle.\par
+- Verification technique possible via tsc et export web (build de validation).\par
+\par
+\b 10. Faisabilite des evolutions (phase 2)\b0\par
+- Backend/API: faisable via Supabase/Firebase ou Node.js + DB PostgreSQL.\par
+- Authentification: email/mot de passe + sessions securisees.\par
+- Geolocalisation temps reel: tracking utilisateur/intervenant + ETA.\par
+- Notifications push: rappels securite et suivi de prise en charge.\par
+- Observabilite: logs erreurs + analytics d'usage pour pilotage produit.\par
+\par
+\b 11. Conclusion\b0\par
+Le projet Safety est techniquement faisable et deja concret sous forme de MVP navigable.\par
+La base actuelle permet une presentation immediate sur PC et mobile, tout en restant evolutive vers une version production avec backend, temps reel et securisation avancee.\par
+}

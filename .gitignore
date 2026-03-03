@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Too large for GitHub
+assets/ANIM BOUCLIER.mov
+assets/TUTO.mov
