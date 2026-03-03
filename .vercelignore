@@ -1,0 +1,9 @@
+node_modules
+.expo
+dist
+*.log
+assets/*.mov
+assets/_debug_*
+*.pdf
+*.rtf
+~$*
